@@ -315,6 +315,12 @@ $(document).ready(function () {
 
     let options = null;
 
+    const flagIcon = document.createElement('span')
+    flagIcon.setAttribute('class', 'iconify')
+    flagIcon.setAttribute('data-icon', 'flag:gb-4x3')
+    $('.number-input-icon-wrapper').prepend(flagIcon)
+
+
     $.each(countries, function (index, country) {
         const option = `<li class="option"><div><span class="iconify" data-icon="flag:${country.code.toLowerCase()}-4x3"></span><span class="country-name">${country.name}</span></div><span class='country-code'>+${country.phone}</span></li>`;
         selectBox.find('ol').append(option);
@@ -352,7 +358,8 @@ $(document).ready(function () {
 
         selectBox.hide();
 
-        $(this).parent().siblings().toggle()
+        $(this).siblings().toggle()
+
         // selectBox.toggle();
     });
 
