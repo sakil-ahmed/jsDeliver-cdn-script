@@ -319,7 +319,7 @@ $(document).ready(function () {
     const flagIcon = document.createElement('span')
     flagIcon.setAttribute('class', 'iconify')
     flagIcon.setAttribute('data-icon', 'flag:gb-4x3')
-    selectedOption.appendChild(flagIcon)
+    $('.number-input-icon-wrapper').append(flagIcon)
 
 
 
