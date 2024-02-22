@@ -264,11 +264,6 @@ $(document).ready(function () {
 
     const additionalStyle = `
     
-.number-input-dropdown ol {
-    list-style: none;
-    max-height: 23rem;
-    overflow: overlay;
-}
 
 .number-input-dropdown ol::-webkit-scrollbar {
     width: 0.6rem;
@@ -327,13 +322,13 @@ $(document).ready(function () {
 
     });
 
-    inputBox.val('+' + countries[0].phone + " ")
+    inputBox.val(parseInt('+' + countries[0].phone + " "))
 
     function selectOption() {
         const icon = $(this).find('.iconify').clone(),
             phoneCode = $(this).find('.country-code').clone().text();
         selectedOption.html('').append(icon, downArrow);
-        inputBox.val(phoneCode + ' ').focus();
+        inputBox.val(parseInt(phoneCode + ' ')).focus();
         selectBox.hide();
         searchBox.val('');
         selectBox.find('.hide').removeClass('hide');
