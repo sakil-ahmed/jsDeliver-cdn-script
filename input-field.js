@@ -313,6 +313,8 @@ $(document).ready(function () {
     let inputBox = $('.number-input-field');
     let selectedOption = $('.number-input-icon-wrapper');
 
+
+
     let options = null;
 
     const flagIcon = document.createElement('span')
@@ -328,13 +330,14 @@ $(document).ready(function () {
 
     });
 
-    inputBox.val('+' + countries[0].phone + " ")
+    inputBox.val(parseInt('+' + countries[0].phone + " "))
 
     function selectOption() {
         const icon = $(this).find('.iconify').clone(),
             phoneCode = $(this).find('.country-code').clone().text();
+
         selectedOption.html('').append(icon, downArrow);
-        inputBox.val(phoneCode + ' ').focus();
+        inputBox.val(parseInt(phoneCode + ' ')).focus();
         selectBox.hide();
         searchBox.val('');
         selectBox.find('.hide').removeClass('hide');
@@ -352,17 +355,15 @@ $(document).ready(function () {
 
     selectedOption.on('click', function (e) {
 
-        inputBox = $(this).siblings()
+        inputBox = $(this).siblings().eq(0)
         selectedOption = $(this)
-        searchBox = $(this).parent().siblings().find('.number-input-search-field')
+        searchBox = $(this).siblings().eq(1).find('.number-input-search-field')
 
-        selectBox.hide();
+        $('.number-input-dropdown').not($(this).siblings().eq(1)).hide();
 
-        $(this).siblings().toggle()
+        $(this).siblings().eq(1).toggle()
 
-        // selectBox.toggle();
     });
-
 
     $(document).on("click", function (e) {
 
@@ -370,6 +371,7 @@ $(document).ready(function () {
 
             if ($(e.target).closest(selectedOption).length === 0) {
                 selectBox.hide()
+                selectBox.attr('input-number-dropdown' , 'hide')
             }
         }
 
