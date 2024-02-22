@@ -346,7 +346,6 @@ $(document).ready(function () {
         selectBox.toggle();
     });
 
-
     $(document).on("click", function (e) {
 
         if (!(e.target.getAttribute('class') === searchBox.attr('class'))) {
