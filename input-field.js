@@ -1211,7 +1211,7 @@ $(document).ready( async function () {
         let selectedColor = color.toRGBA()
         const rgba = `rgba(${parseInt(selectedColor[0])}, ${parseInt(selectedColor[1])}, ${parseInt(selectedColor[2])} , ${selectedColor[3]})`
 
-        $('.hidden-color-field').attr('value', rgba)
+        $('[data-field="color-input-field"]').attr('value', rgba)
 
         $('.color-picker-button').css('background-color', rgba)
 
