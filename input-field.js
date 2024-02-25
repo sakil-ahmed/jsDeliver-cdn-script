@@ -1188,7 +1188,7 @@ $(document).ready( async function () {
 
         el: '.color-picker-button',
         theme: 'nano',
-        container: ".color-picker-wrapper",
+        container: ".color-picker-container",
         appClass: 'custom-class',
         useAsButton: true,
         default: `${defaultColor}`,
