@@ -1170,7 +1170,7 @@ $(document).ready(function () {
 
     const style = document.createElement('style')
     style.innerHTML = customStyle
-    document.getElementsByTagName('head')[0].appendChild(style)
+    document.head.appendChild(style)
 
     const defaultColor = $('.color-picker-button').attr('data-default-color')
 
