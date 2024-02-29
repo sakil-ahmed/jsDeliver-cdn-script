@@ -7521,6 +7521,9 @@ $(document).ready(async function () {
 
 
     const customStyle = `
+    .dropzone{
+    background-color:transparent !important;
+    }
     .dropzone .dz-message{
             margin: 0;
         }
@@ -7531,12 +7534,7 @@ $(document).ready(async function () {
             justify-content: center;
             gap: 5px;
         }
-
-        .dz-message-content svg {
-            color: red;
-        }
         .dz-message-link{
-           color: #ffdd00;
             text-decoration: underline;
         }
     `
