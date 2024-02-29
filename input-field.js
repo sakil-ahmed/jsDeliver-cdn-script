@@ -7568,7 +7568,7 @@ $(document).ready(async function () {
 
     await addDropzoneScript()
 
-    pzone.autoDiscover = false;
+    Dropzone.autoDiscover = false;
 
     const dropzoneList = $('.dropzone')
 
