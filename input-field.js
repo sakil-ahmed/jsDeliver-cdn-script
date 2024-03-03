@@ -7628,6 +7628,49 @@ $(document).ready(async function () {
 })
 
 
+// Advance Email Field
+$(document).ready(function () {
+    const inputElements = $('input[data-email="form-field-pro-email"]');
+    const mailFormat = /^[A-Za-z._\-0-9]*[@][A-Za-z]*[.][a-z]{2,4}$/;
+
+    inputElements.each(function () {
+        const $this = $(this);
+        const $nextElement = $this.next('.email-error-message');
+
+        $this.on('keyup', function () {
+            const inputValue = $this.val();
+
+            if (!mailFormat.test(inputValue) && inputValue !== '') {
+                $nextElement.text($this.data('invalid-error-msg'));
+            } else if (inputValue === '') {
+                $nextElement.text($this.data('empty-error-msg'));
+            } else {
+                $nextElement.text('');
+            }
+        });
+    });
+
+    $('form').submit(function (e) {
+        e.preventDefault();
+
+        let form = $(this);
+        let hasEmptyField = false;
+
+        form.find('input[data-email="form-field-pro-email"]').each(function () {
+            if ($(this).val().trim() === '') {
+                hasEmptyField = true;
+                const $nextElement = $(this).next('.email-error-message');
+                $nextElement.text($(this).data('empty-error-msg'));
+            }
+        });
+
+        if (!hasEmptyField) {
+            form[0].submit()
+            console.log('Form submitted successfully');
+        }
+    });
+});
+
 
 
 
