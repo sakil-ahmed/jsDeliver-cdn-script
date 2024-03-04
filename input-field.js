@@ -7672,12 +7672,10 @@ $(document).ready(function () {
             });
 
             if (hasEmptyField) {
-                console.log(hasEmptyField)
-                form.off('submit')
+                console.log('Form validation failed');
+
             }else{
-                form[0].submit();
-                e.preventDefault()
-                console.log(hasEmptyField)
+                $(this).off('submit').submit();
                 console.log('Form submitted successfully');
             }
         });
