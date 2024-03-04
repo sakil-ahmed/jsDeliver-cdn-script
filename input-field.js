@@ -7635,7 +7635,7 @@ $(document).ready(function () {
     //
     // webflow.push(function () {
 
-        // $(document).off('submit');
+
 
         const inputElements = $('input[data-email="form-field-pro-email"]');
         const mailFormat = /^[A-Za-z._\-0-9]*[@][A-Za-z]*[.][a-z]{2,4}$/;
@@ -7671,7 +7671,9 @@ $(document).ready(function () {
                 }
             });
 
-            if (!hasEmptyField) {
+            if (hasEmptyField) {
+                $(document).off('submit');
+            }else{
                 form[0].submit();
                 console.log('Form submitted successfully');
             }
