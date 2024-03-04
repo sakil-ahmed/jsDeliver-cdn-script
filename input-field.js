@@ -7631,9 +7631,9 @@ $(document).ready(async function () {
 // Advance Email Field
 $(document).ready(function () {
 
-    let webflow = webflow || []
-
-    webflow.push(function () {
+    // let webflow = window.webflow || []
+    //
+    // webflow.push(function () {
 
         $(document).off('submit');
 
@@ -7676,7 +7676,7 @@ $(document).ready(function () {
                 console.log('Form submitted successfully');
             }
         });
-    })
+    // })
 });
 
 
