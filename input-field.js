@@ -7631,7 +7631,7 @@ $(document).ready(async function () {
 // Advance Email Field
 $(document).ready(function () {
 
-    let webflow = window.webflow || []
+    let webflow = webflow || []
 
     webflow.push(function () {
 
