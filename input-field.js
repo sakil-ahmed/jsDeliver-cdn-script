@@ -7650,6 +7650,8 @@ $(document).ready(function () {
         });
     });
 
+    $(document).off('submit');
+
     $('form').submit(function (e) {
         e.preventDefault();
 
