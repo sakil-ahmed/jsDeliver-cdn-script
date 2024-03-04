@@ -7672,7 +7672,7 @@ $(document).ready(function () {
             });
 
             if (!hasEmptyField) {
-                this.submit()
+                form.off('submit').submit();
                 console.log('Form submitted successfully');
             }
         });
