@@ -7657,13 +7657,13 @@ $(document).ready(function () {
             });
         });
 
-        $('form').submit(function (e) {
+        $('form').submit(async function (e) {
             e.preventDefault()
 
             let form = $(this);
             let hasEmptyField = false;
 
-            form.find('input[data-email="form-field-pro-email"]').each(function () {
+           await form.find('input[data-email="form-field-pro-email"]').each(function () {
                 if ($(this).val().trim() === '') {
                     hasEmptyField = true;
                     const $nextElement = $(this).next('.email-error-message');
@@ -7672,8 +7672,8 @@ $(document).ready(function () {
             });
 
             if (hasEmptyField) {
-                console.log('Form validation failed');
                 $(this).off('submit')
+                console.log('Form validation failed');
             }else{
                 $(this).off('submit').submit();
                 console.log('Form submitted successfully');
