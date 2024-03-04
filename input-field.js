@@ -7658,6 +7658,7 @@ $(document).ready(function () {
         });
 
         $('form').submit(function (e) {
+            e.preventDefault()
 
             let form = $(this);
             let hasEmptyField = false;
@@ -7671,6 +7672,7 @@ $(document).ready(function () {
             });
 
             if (hasEmptyField) {
+                e.preventDefault()
                 $(document).off('submit');
             }else{
                 form[0].submit();
