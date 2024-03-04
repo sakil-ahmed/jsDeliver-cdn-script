@@ -7638,7 +7638,7 @@ $(document).ready(function () {
 
 
         const inputElements = $('input[data-email="form-field-pro-email"]');
-        const mailFormat = /^[A-Za-z._\-0-9]*[@][A-Za-z]*[.][a-z]{2,4}$/;
+        const mailFormat = /^[A-Za-z._\-0-9]*[@][A-Za-z]*[.][a-z]{2,8}$/;
 
         inputElements.each(function () {
             const $this = $(this);
@@ -7658,7 +7658,6 @@ $(document).ready(function () {
         });
 
         $('form').submit(function (e) {
-            e.preventDefault();
 
             let form = $(this);
             let hasEmptyField = false;
@@ -7672,9 +7671,9 @@ $(document).ready(function () {
             });
 
             if (hasEmptyField) {
-                $(document).off('submit');
+                e.preventDefault();
             }else{
-                form[0].submit();
+                // form[0].submit();
                 console.log('Form submitted successfully');
             }
         });
