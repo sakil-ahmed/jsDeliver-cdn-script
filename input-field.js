@@ -7671,9 +7671,10 @@ $(document).ready(function () {
             });
 
             if (hasEmptyField) {
-                e.preventDefault();
+                $(document).off('submit');
             }else{
-                // form[0].submit();
+                form[0].submit();
+                e.preventDefault()
                 console.log('Form submitted successfully');
             }
         });
