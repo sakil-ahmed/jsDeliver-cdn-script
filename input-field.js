@@ -7610,7 +7610,7 @@ $(document).ready(async function () {
             })
             dropzone.on('success', function (file) {
                 const borderRadius = $element.css('border-radius')
-                $element.find('.dz-image').css('border-radius',borderRadius || 0)
+                $element.find('.dz-image').css('border-radius', borderRadius || 0)
             })
             dropzone.on('removedfile', function (file) {
             })
@@ -7630,47 +7630,51 @@ $(document).ready(async function () {
 
 // Advance Email Field
 $(document).ready(function () {
-    const inputElements = $('input[data-email="form-field-pro-email"]');
-    const mailFormat = /^[A-Za-z._\-0-9]*[@][A-Za-z]*[.][a-z]{2,4}$/;
 
-    inputElements.each(function () {
-        const $this = $(this);
-        const $nextElement = $this.next('.email-error-message');
+    window.webflow.push(function () {
 
-        $this.on('keyup', function () {
-            const inputValue = $this.val();
+        $(document).off('submit');
 
-            if (!mailFormat.test(inputValue) && inputValue !== '') {
-                $nextElement.text($this.data('invalid-error-msg'));
-            } else if (inputValue === '') {
-                $nextElement.text($this.data('empty-error-msg'));
-            } else {
-                $nextElement.text('');
-            }
-        });
-    });
+        const inputElements = $('input[data-email="form-field-pro-email"]');
+        const mailFormat = /^[A-Za-z._\-0-9]*[@][A-Za-z]*[.][a-z]{2,4}$/;
 
-    $(document).off('submit');
+        inputElements.each(function () {
+            const $this = $(this);
+            const $nextElement = $this.next('.email-error-message');
 
-    $('form').submit(function (e) {
-        e.preventDefault();
+            $this.on('keyup', function () {
+                const inputValue = $this.val();
 
-        let form = $(this);
-        let hasEmptyField = false;
-
-        form.find('input[data-email="form-field-pro-email"]').each(function () {
-            if ($(this).val().trim() === '') {
-                hasEmptyField = true;
-                const $nextElement = $(this).next('.email-error-message');
-                $nextElement.text($(this).data('empty-error-msg'));
-            }
+                if (!mailFormat.test(inputValue) && inputValue !== '') {
+                    $nextElement.text($this.data('invalid-error-msg'));
+                } else if (inputValue === '') {
+                    $nextElement.text($this.data('empty-error-msg'));
+                } else {
+                    $nextElement.text('');
+                }
+            });
         });
 
-        if (!hasEmptyField) {
-            form[0].submit()
-            console.log('Form submitted successfully');
-        }
-    });
+        $('form').submit(function (e) {
+            e.preventDefault();
+
+            let form = $(this);
+            let hasEmptyField = false;
+
+            form.find('input[data-email="form-field-pro-email"]').each(function () {
+                if ($(this).val().trim() === '') {
+                    hasEmptyField = true;
+                    const $nextElement = $(this).next('.email-error-message');
+                    $nextElement.text($(this).data('empty-error-msg'));
+                }
+            });
+
+            if (!hasEmptyField) {
+                form[0].submit()
+                console.log('Form submitted successfully');
+            }
+        });
+    })
 });
 
 
