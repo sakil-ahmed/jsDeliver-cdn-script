@@ -7636,53 +7636,124 @@ $(document).ready(function () {
     // webflow.push(function () {
 
 
+    const inputElements = $('input[data-email="form-field-pro-email"]');
+    const mailFormat = /^[A-Za-z._\-0-9]*[@][A-Za-z]*[.][a-z]{2,8}$/;
 
-        const inputElements = $('input[data-email="form-field-pro-email"]');
-        const mailFormat = /^[A-Za-z._\-0-9]*[@][A-Za-z]*[.][a-z]{2,8}$/;
+    inputElements.each(function () {
+        const $this = $(this);
+        const $nextElement = $this.next('.email-error-message');
 
-        inputElements.each(function () {
-            const $this = $(this);
-            const $nextElement = $this.next('.email-error-message');
+        $this.on('keyup', function () {
+            const inputValue = $this.val();
 
-            $this.on('keyup', function () {
-                const inputValue = $this.val();
-
-                if (!mailFormat.test(inputValue) && inputValue !== '') {
-                    $nextElement.text($this.data('invalid-error-msg'));
-                } else if (inputValue === '') {
-                    $nextElement.text($this.data('empty-error-msg'));
-                } else {
-                    $nextElement.text('');
-                }
-            });
-        });
-
-        $('form').submit(async function (e) {
-            e.preventDefault()
-
-            let form = $(this);
-            let hasEmptyField = false;
-
-           await form.find('input[data-email="form-field-pro-email"]').each(function () {
-                if ($(this).val().trim() === '') {
-                    hasEmptyField = true;
-                    const $nextElement = $(this).next('.email-error-message');
-                    $nextElement.text($(this).data('empty-error-msg'));
-                }
-            });
-
-            if (hasEmptyField) {
-                $(this).off('submit')
-                console.log('Form validation failed');
-            }else{
-                $(this).off('submit').submit();
-                console.log('Form submitted successfully');
+            if (!mailFormat.test(inputValue) && inputValue !== '') {
+                $nextElement.text($this.data('invalid-error-msg'));
+            } else if (inputValue === '') {
+                $nextElement.text($this.data('empty-error-msg'));
+            } else {
+                $nextElement.text('');
             }
         });
+    });
+
+    $('form').submit(async function (e) {
+        e.preventDefault()
+
+        let form = $(this);
+        let hasEmptyField = false;
+
+        await form.find('input[data-email="form-field-pro-email"]').each(function () {
+            if ($(this).val().trim() === '') {
+                hasEmptyField = true;
+                const $nextElement = $(this).next('.email-error-message');
+                $nextElement.text($(this).data('empty-error-msg'));
+            }
+        });
+
+        if (hasEmptyField) {
+            $(this).off('submit')
+            console.log('Form validation failed');
+        } else {
+            $(this).off('submit').submit();
+            console.log('Form submitted successfully');
+        }
+    });
     // })
 });
 
 
+// net promoter score
+$(document).ready(function () {
+
+
+    const customStyle = `
+          .net-promoter-active {
+            background-color: #000000;
+            color: #ffffff;
+        }
+    
+    `
+    const style = document.createElement("style");
+    style.innerHTML = customStyle;
+
+    document.getElementsByTagName("head")[0].appendChild(style);
+
+    const netPromoterElement = $('[data-field-name="net-promoter-score"]')
+
+    function getAttributes($element) {
+        let attributes = {};
+        $.each($element[0].attributes, function (index, attr) {
+            attributes[attr.name.replace(/-/g, '_')] = attr.value;
+        });
+        return attributes;
+    }
+
+    netPromoterElement.each(function () {
+
+        const element = $(this)
+        const elementAttributes = getAttributes(element);
+
+        const inputElement = element.find('[data-input="net-promoter-score"]')
+        const extraFeedbackCollection = element.find('[data-field="extra-feedback-collection"]')
+
+        if (!elementAttributes.data_extra_feedback_collection.includes('always')) {
+            extraFeedbackCollection.remove()
+        }
+
+        $(this).find('[data-name="net-promoter-score-value"]').on('click', function () {
+            const value = $(this).text()
+            inputElement.val(value)
+
+            if (value === inputElement.val()) {
+                element.find('[data-name="net-promoter-score-value"]').removeClass('net-promoter-active')
+                $(this).addClass('net-promoter-active')
+
+                const extraFeedback = elementAttributes.data_extra_feedback_collection || ''
+                if (!extraFeedback.includes('always')) {
+
+                    if (!extraFeedback.includes('never') || !extraFeedback.includes('always')) {
+
+                        if (parseInt(value) <= parseInt(extraFeedback)) {
+
+                            element.append(extraFeedbackCollection)
+
+                        } else {
+
+                            extraFeedbackCollection.remove()
+                        }
+                    } else {
+
+                        extraFeedbackCollection.show()
+                    }
+                }
+
+            }
+
+        })
+
+    })
+
+})
 
 
 
