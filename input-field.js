@@ -7733,7 +7733,7 @@ $(document).ready(function () {
 
                     if (!extraFeedback.includes('never') || !extraFeedback.includes('always')) {
 
-                        if (parseInt(value) <= parseInt(extraFeedback)) {
+                        if (parseInt(value) < parseInt(extraFeedback)) {
 
                             element.append(extraFeedbackCollection)
 
