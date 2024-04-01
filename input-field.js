@@ -6313,7 +6313,7 @@ $(document).ready(async function () {
     // add color picker library script
             const colorPickerScript = document.createElement("script");
             colorPickerScript.src = `https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.js`;
-            document.getElementsByTagName("head")[0].appendChild(colorPickerScript);
+            document.getElementsByTagName("body")[0].appendChild(colorPickerScript);
 
     const customStyle = `  .sp-choose {
             background-color: #111111 !important;
