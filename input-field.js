@@ -6311,9 +6311,21 @@ $(document).ready(function () {
 $(document).ready(async function () {
     // https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.js
     // add color picker library script
+
+    const addColorPickerScript = async () => {
+        const res = await fetch(`https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.js`);
+
+        if (res.ok) {
+            const scriptString = await res.text();
             const colorPickerScript = document.createElement("script");
-            colorPickerScript.src = `https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.js`;
-            document.getElementsByTagName("body")[0].appendChild(colorPickerScript);
+            colorPickerScript.innerHTML = scriptString;
+
+            document.getElementsByTagName("head")[0].appendChild(colorPickerScript);
+        }
+    };
+
+    await addColorPickerScript()
+
 
     const customStyle = `  .sp-choose {
             background-color: #111111 !important;
