@@ -6177,6 +6177,19 @@ const countries = [
 
 $(document).ready(function () {
 
+    const wrapperDiv = $('[data-form-field-pro="number-input-with-country-code"]')
+
+    const lightTheme = {
+        lightThemeHoverTextColor: wrapperDiv.attr('data-light-theme-score-text-color'),
+        lightThemeHoverBackgroundColor: wrapperDiv.attr('data-light-theme-score-background-color')
+    }
+
+    const darkTheme = {
+        darkThemeHoverTextColor: wrapperDiv.attr('data-dark-theme-score-text-color'),
+        darkThemeHoverBackgroundColor: wrapperDiv.attr('data-dark-theme-score-background-color')
+    }
+
+
     const script = document.createElement('script');
     script.src = 'https://code.iconify.design/3/3.1.0/iconify.min.js';
 
@@ -6214,13 +6227,21 @@ $(document).ready(function () {
 }
 
 .number-input-dropdown ol li:hover {
-    background-color: #000000;
-    color:#ffffff;
+    background-color:${lightTheme.lightThemeHoverBackgroundColor};
+    color:${lightTheme.lightThemeHoverTextColor};
 }
 
 .number-input-dropdown ol li .country-name {
     margin-left: .4rem;
 }
+
+  @media (prefers-color-scheme: dark){
+          .number-input-dropdown ol li:hover {
+                background-color: ${darkTheme.darkThemeHoverBackgroundColor};
+                color: ${darkTheme.darkThemeHoverTextColor};
+            }
+        }
+
     `
 
     const style = document.createElement('style')
@@ -6300,7 +6321,6 @@ $(document).ready(function () {
 
     options.on('click', selectOption);
     searchBox.on('input', searchCountry);
-
 
 })
 
