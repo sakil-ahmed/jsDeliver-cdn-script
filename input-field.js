@@ -6654,4 +6654,68 @@ $(document).ready(function () {
 })
 
 
+// Likert Scale field
 
+$(document).ready(function () {
+
+
+    const customStyle = `
+          [data-field="likert-scale-field-radio"]:checked,
+        [data-field="likert-scale-field-radio"]:not(:checked) {
+            position: absolute;
+           opacity: 0;
+            visibility: hidden;
+            height: 0;
+            margin: 0;
+        }
+        [data-field="likert-scale-field-radio"]:checked + label,
+        [data-field="likert-scale-field-radio"]:not(:checked) + label
+        {
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+        }
+        [data-field="likert-scale-field-radio"]:checked + label:before,
+        [data-field="likert-scale-field-radio"]:not(:checked) + label:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #000;
+            border-radius: 100%;
+            background: #fff;
+        }
+        [data-field="likert-scale-field-radio"]:checked + label:after,
+        [data-field="likert-scale-field-radio"]:not(:checked) + label:after {
+            content: '';
+            width: 15px;
+            height: 15px;
+            background-image: url('data:image/svg+xml,<svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.3333 1L4.54167 8.79167L1 5.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+            background-repeat:no-repeat;
+            position: absolute;
+            top: 6px;
+            left: 5px;
+            border-radius: 100%;
+            -webkit-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+        }
+        [data-field="likert-scale-field-radio"]:not(:checked) + label:after {
+            opacity: 0;
+            -webkit-transform: scale(0);
+            transform: scale(0);
+        }
+        [data-field="likert-scale-field-radio"]:checked + label:after {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    
+    `
+    const style = document.createElement("style");
+    style.innerHTML = customStyle;
+
+    document.getElementsByTagName("head")[0].appendChild(style);
+
+})
