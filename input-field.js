@@ -6675,6 +6675,7 @@ $(document).ready(function () {
             display: inline-block;
             border: 1px solid #000;
             border-radius: 50%;
+            margin-bottom:0 !important;
         }
 
         [data-field="likert-scale-field-radio"]:checked + label{
@@ -6686,6 +6687,7 @@ $(document).ready(function () {
             background-image: url('data:image/svg+xml,<svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.3333 1L4.54167 8.79167L1 5.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
             background-repeat:no-repeat;
             background-position: center;
+            margin-bottom:0 !important;
         }
     
     `
