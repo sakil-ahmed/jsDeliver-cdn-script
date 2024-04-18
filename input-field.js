@@ -6177,7 +6177,8 @@ const countries = [
 
 $(document).ready(function () {
 
-    const wrapperDiv = $('[data-form-field-pro="number-input-with-country-code"]')
+    const wrapperDiv = $('[data-form-field-pro=number-input-with-country-code]')
+    console.log(wrapperDiv , wrapperDiv.attr('data-light-theme-score-text-color'))
 
     const lightTheme = {
         lightThemeHoverTextColor: wrapperDiv.attr('data-light-theme-score-text-color'),
@@ -6189,7 +6190,7 @@ $(document).ready(function () {
         darkThemeHoverBackgroundColor: wrapperDiv.attr('data-dark-theme-score-background-color')
     }
 
-    console.log(lightTheme , darkTheme)
+
 
     const script = document.createElement('script');
     script.src = 'https://code.iconify.design/3/3.1.0/iconify.min.js';
