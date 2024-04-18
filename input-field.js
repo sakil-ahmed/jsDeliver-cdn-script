@@ -6323,6 +6323,8 @@ $(document).ready(function () {
     options.on('click', selectOption);
     searchBox.on('input', searchCountry);
 
+    console.log( $('form').attr('action'))
+
 })
 
 
