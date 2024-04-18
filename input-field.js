@@ -6189,6 +6189,7 @@ $(document).ready(function () {
         darkThemeHoverBackgroundColor: wrapperDiv.attr('data-dark-theme-score-background-color')
     }
 
+    console.log(lightTheme , darkTheme)
 
     const script = document.createElement('script');
     script.src = 'https://code.iconify.design/3/3.1.0/iconify.min.js';
@@ -6227,8 +6228,8 @@ $(document).ready(function () {
 }
 
 .number-input-dropdown ol li:hover {
-    background-color:${lightTheme.lightThemeHoverBackgroundColor};
-    color:${lightTheme.lightThemeHoverTextColor};
+    background-color:${lightTheme.lightThemeHoverBackgroundColor || '#000000'};
+    color:${lightTheme.lightThemeHoverTextColor || '#ffffff'};
 }
 
 .number-input-dropdown ol li .country-name {
@@ -6237,8 +6238,8 @@ $(document).ready(function () {
 
   @media (prefers-color-scheme: dark){
           .number-input-dropdown ol li:hover {
-                background-color: ${darkTheme.darkThemeHoverBackgroundColor};
-                color: ${darkTheme.darkThemeHoverTextColor};
+                background-color: ${darkTheme.darkThemeHoverBackgroundColor || '#000000'};
+                color: ${darkTheme.darkThemeHoverTextColor || '#ffffff'};
             }
         }
 
