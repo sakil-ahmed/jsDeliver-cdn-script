@@ -6177,8 +6177,9 @@ const countries = [
 
 $(document).ready(function () {
 
-    const wrapperDiv = $('[data-form-field-pro=number-input-with-country-code]')
-    console.log(wrapperDiv , wrapperDiv.attr('data-light-theme-score-text-color'))
+    const wrapperDiv = $('[data-form-field-pro="number-input-with-country-code"]')
+
+    console.log(wrapperDiv)
 
     const lightTheme = {
         lightThemeHoverTextColor: wrapperDiv.attr('data-light-theme-score-text-color'),
