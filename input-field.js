@@ -262,16 +262,14 @@ $(document).ready(function () {
 
     const wrapperDiv = $('[data-form-field-pro="number-input-with-country-code"]')
 
-    console.log(wrapperDiv)
-
     const lightTheme = {
-        lightThemeHoverTextColor: wrapperDiv.attr('data-light-theme-score-text-color'),
-        lightThemeHoverBackgroundColor: wrapperDiv.attr('data-light-theme-score-background-color')
+        lightThemeHoverTextColor: wrapperDiv.attr('data-light-theme-number-input-text-color'),
+        lightThemeHoverBackgroundColor: wrapperDiv.attr('data-light-theme-number-input-background-color')
     }
 
     const darkTheme = {
-        darkThemeHoverTextColor: wrapperDiv.attr('data-dark-theme-score-text-color'),
-        darkThemeHoverBackgroundColor: wrapperDiv.attr('data-dark-theme-score-background-color')
+        darkThemeHoverTextColor: wrapperDiv.attr('data-dark-theme-number-input-text-color'),
+        darkThemeHoverBackgroundColor: wrapperDiv.attr('data-dark-theme-number-input-background-color')
     }
 
 
