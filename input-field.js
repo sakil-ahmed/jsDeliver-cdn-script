@@ -1,7 +1,5 @@
 
 // Number input field with country code
-
-
 // 253 countries
 const countries = [
     {name: "Afghanistan", code: "AF", phone: 93},
@@ -378,7 +376,6 @@ $(document).ready(function () {
         });
     }
 
-
     selectedOption.on('click', function (e) {
 
         inputBox = $(this).siblings().eq(0)
@@ -406,9 +403,61 @@ $(document).ready(function () {
     options.on('click', selectOption);
     searchBox.on('input', searchCountry);
 
-
 })
 
+
+// new phone number input test
+$(document).ready(async function () {
+
+
+    const addPhoneNumberInputScript = async () => {
+        const res = await fetch(`https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/intlTelInput.min.js`);
+
+        if (res.ok) {
+            const scriptString = await res.text();
+            const colorPickerScript = document.createElement("script");
+            colorPickerScript.innerHTML = scriptString;
+
+            document.getElementsByTagName("head")[0].appendChild(colorPickerScript);
+        }
+    };
+
+    await addPhoneNumberInputScript()
+
+
+//     const customStyle = `  .sp-choose {
+//             background-color: #111111 !important;
+//         }
+//         .sp-dd {
+//             display: none;
+//         }
+//         .sp-replacer {
+//             width: 30px;
+//             height: 30px;
+//         }
+// `
+    const addPhoneNumberInputCss = async () => {
+        const res = await fetch(`https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/css/intlTelInput.css`);
+
+        if (res.ok) {
+            const cssString = await res.text();
+            const style = document.createElement("style");
+            style.innerHTML = `${cssString}`;
+
+            document.getElementsByTagName("head")[0].appendChild(style);
+        }
+    };
+
+    await addPhoneNumberInputCss()
+
+
+    const input = document.querySelector("#phone");
+    window.intlTelInput(input, {
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js",
+    });
+
+
+})
 
 // Color picker input field
 
@@ -479,9 +528,7 @@ $(document).ready(async function () {
 
     })
 
-
 })
-
 
 // File Uploader
 
