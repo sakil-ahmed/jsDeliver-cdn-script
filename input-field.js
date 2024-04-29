@@ -424,6 +424,21 @@ $(document).ready(async function () {
 
     await addPhoneNumberInputScript()
 
+    // const addPhoneNumberInputUtilsScript = async () => {
+    //
+    //     const utilsRes = await fetch(`https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js`);
+    //
+    //     if (utilsRes.ok) {
+    //         const utilsScript = await utilsRes.text();
+    //         const colorPickerScript = document.createElement("script");
+    //         colorPickerScript.innerHTML = `${scriptString} ${utilsScript}`;
+    //
+    //         document.getElementsByTagName("head")[0].appendChild(colorPickerScript);
+    //     }
+    // };
+
+    // await addPhoneNumberInputUtilsScript()
+
 
 //     const customStyle = `  .sp-choose {
 //             background-color: #111111 !important;
@@ -453,7 +468,8 @@ $(document).ready(async function () {
 
     const input = document.querySelector("#phone");
     window.intlTelInput(input, {
-        countrySearch: false
+        countrySearch: false,
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js",
     });
 
 
