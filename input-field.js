@@ -447,6 +447,7 @@ $(document).ready(async function () {
     const input = document.querySelector("#phone");
     window.intlTelInput(input, {
         initialCountry: "auto",
+        nationalMode: true,
         geoIpLookup: callback => {
             fetch("https://ipapi.co/json/",{referrerPolicy:"strict-origin-when-cross-origin"})
                 .then(res => res.json())
