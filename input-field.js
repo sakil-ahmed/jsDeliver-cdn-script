@@ -410,13 +410,11 @@ $(document).ready(async function () {
 
     const addPhoneNumberInputScript = async () => {
         const res = await fetch(`https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/intlTelInput.min.js`);
-        const utilsRes = await fetch(`https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js`);
 
-        if (res.ok || utilsRes.ok) {
+        if (res.ok) {
             const scriptString = await res.text();
-            const utilsScript = await utilsRes.text();
             const colorPickerScript = document.createElement("script");
-            colorPickerScript.innerHTML = `${scriptString} ${utilsScript}`;
+            colorPickerScript.innerHTML = scriptString;
 
             document.getElementsByTagName("head")[0].appendChild(colorPickerScript);
         }
@@ -424,16 +422,6 @@ $(document).ready(async function () {
 
     await addPhoneNumberInputScript()
 
-    const addPhoneNumberInputUtilsScript = async () => {
-        const scriptTag = document.createElement("script");
-        scriptTag.attributes('class', 'iti-load-utils');
-        scriptTag.attributes('async', '');
-        scriptTag.src = 'https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js'
-
-
-    };
-
-    await addPhoneNumberInputUtilsScript()
 
 
 //     const customStyle = `  .sp-choose {
@@ -464,7 +452,7 @@ $(document).ready(async function () {
 
     const input = document.querySelector("#phone");
     window.intlTelInput(input, {
-        // utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js",
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js",
         countrySearch: false,
 
     });
