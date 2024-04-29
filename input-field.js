@@ -449,7 +449,7 @@ $(document).ready(async function () {
         initialCountry: "auto",
         nationalMode: true,
         geoIpLookup: callback => {
-            fetch("https://ipapi.co/json/",{referrerPolicy:"strict-origin-when-cross-origin"})
+            fetch("https://ipapi.co/json/", {referrerPolicy: "strict-origin-when-cross-origin", method: "GET"})
                 .then(res => res.json())
                 .then(data => callback(data.country_code))
                 .catch(() => callback("us"));
