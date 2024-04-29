@@ -410,11 +410,13 @@ $(document).ready(async function () {
 
     const addPhoneNumberInputScript = async () => {
         const res = await fetch(`https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/intlTelInput.min.js`);
+        const utilsRes = await fetch(`https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js`);
 
-        if (res.ok) {
+        if (res.ok || utilsRes.ok) {
             const scriptString = await res.text();
+            const utilsScript = await utilsRes.text();
             const colorPickerScript = document.createElement("script");
-            colorPickerScript.innerHTML = scriptString;
+            colorPickerScript.innerHTML = `${scriptString} ${utilsScript}`;
 
             document.getElementsByTagName("head")[0].appendChild(colorPickerScript);
         }
@@ -451,7 +453,6 @@ $(document).ready(async function () {
 
     const input = document.querySelector("#phone");
     window.intlTelInput(input, {
-        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js",
         countrySearch: false
     });
 
