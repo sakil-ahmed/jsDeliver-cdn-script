@@ -446,6 +446,8 @@ $(document).ready(async function () {
 
     const input = document.querySelector("#phone");
     window.intlTelInput(input, {
+        initialCountry: "us",
+        hiddenInput: () => ({country: "country_code"}),
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js",
         countrySearch: false,
 
