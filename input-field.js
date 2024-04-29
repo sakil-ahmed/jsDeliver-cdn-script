@@ -1,4 +1,3 @@
-
 // Number input field with country code
 // 253 countries
 const countries = [
@@ -271,7 +270,6 @@ $(document).ready(function () {
     }
 
 
-
     const script = document.createElement('script');
     script.src = 'https://code.iconify.design/3/3.1.0/iconify.min.js';
 
@@ -454,6 +452,7 @@ $(document).ready(async function () {
     const input = document.querySelector("#phone");
     window.intlTelInput(input, {
         utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js",
+        countrySearch: false
     });
 
 
