@@ -403,7 +403,6 @@ $(document).ready(function () {
 
 })
 
-
 // new phone number input test
 $(document).ready(async function () {
 
@@ -423,7 +422,6 @@ $(document).ready(async function () {
     await addPhoneNumberInputScript()
 
 
-
 //     const customStyle = `  .sp-choose {
 //             background-color: #111111 !important;
 //         }
@@ -436,15 +434,11 @@ $(document).ready(async function () {
 //         }
 // `
     const addPhoneNumberInputCss = async () => {
-        const res = await fetch(`https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/css/intlTelInput.css`);
+        const link = document.createElement('link')
+        link.rel = "stylesheet"
+        link.href = "https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/css/intlTelInput.css"
 
-        if (res.ok) {
-            const cssString = await res.text();
-            const style = document.createElement("style");
-            style.innerHTML = `${cssString}`;
-
-            document.getElementsByTagName("head")[0].appendChild(style);
-        }
+        document.getElementsByTagName("head")[0].appendChild(link);
     };
 
     await addPhoneNumberInputCss()
