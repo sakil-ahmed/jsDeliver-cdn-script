@@ -445,20 +445,28 @@ $(document).ready(async function () {
 
 
     const input = document.querySelector("#phone");
-    window.intlTelInput(input, {
-        initialCountry: "auto",
-        nationalMode: true,
-        geoIpLookup: callback => {
-            fetch("https://ipapi.co/json/", {referrerPolicy: "strict-origin-when-cross-origin", method: "GET"})
-                .then(res => res.json())
-                .then(data => callback(data.country_code))
-                .catch(() => callback("us"));
-        },
-        hiddenInput: () => ({country: "country_code"}),
-        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js",
-        countrySearch: false,
 
+    let iti = window.intlTelInput(input, {
+        preferredCountries: ['no', 'se'],
+        countrySearch: true,
+        utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js',
     });
+
+    $.get(
+        'https://ipinfo.io',
+        function (response) {
+            let countryCode = response.country;
+            iti.setCountry(countryCode);
+        },
+        'jsonp',
+    );
+
+    input.addEventListener('change', formatPhoneNumber);
+    input.addEventListener('keyup', formatPhoneNumber);
+
+    function formatPhoneNumber() {
+        input.value = iti.getNumber(window.intlTelInputUtils.numberFormat.INTERNATIONAL);
+    }
 
 
 })
