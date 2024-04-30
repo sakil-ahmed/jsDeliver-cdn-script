@@ -254,154 +254,154 @@ const countries = [
     {name: "Zambia", code: "ZM", phone: 260},
     {name: "Zimbabwe", code: "ZW", phone: 263}
 ]
-
-$(document).ready(function () {
-
-    const wrapperDiv = $('[data-form-field-pro="number-input-with-country-code"]')
-
-    const lightTheme = {
-        lightThemeHoverTextColor: wrapperDiv.attr('data-light-theme-number-input-text-color'),
-        lightThemeHoverBackgroundColor: wrapperDiv.attr('data-light-theme-number-input-background-color')
-    }
-
-    const darkTheme = {
-        darkThemeHoverTextColor: wrapperDiv.attr('data-dark-theme-number-input-text-color'),
-        darkThemeHoverBackgroundColor: wrapperDiv.attr('data-dark-theme-number-input-background-color')
-    }
-
-
-    const script = document.createElement('script');
-    script.src = 'https://code.iconify.design/3/3.1.0/iconify.min.js';
-
-    document.head.appendChild(script);
-
-
-    const additionalStyle = `
-    
-
-.number-input-dropdown ol::-webkit-scrollbar {
-    width: 0.6rem;
-}
-
-.number-input-dropdown ol::-webkit-scrollbar-thumb {
-    width: 0.4rem;
-    height: 3rem;
-    background-color: #ccc;
-    border-radius: .4rem;
-}
-
-.number-input-dropdown ol li {
-    padding: 8px;
-    display: flex;
-    font-size: 14px;
-    justify-content: space-between;
-    cursor: pointer;
-}
-
-.number-input-dropdown ol li.hide {
-    display: none;
-}
-
-.number-input-dropdown ol li:not(:last-child) {
-    border-bottom: .1rem solid #eee;
-}
-
-.number-input-dropdown ol li:hover {
-    background-color:${lightTheme.lightThemeHoverBackgroundColor || '#000000'};
-    color:${lightTheme.lightThemeHoverTextColor || '#ffffff'};
-}
-
-.number-input-dropdown ol li .country-name {
-    margin-left: .4rem;
-}
-
-  @media (prefers-color-scheme: dark){
-          .number-input-dropdown ol li:hover {
-                background-color: ${darkTheme.darkThemeHoverBackgroundColor || '#000000'};
-                color: ${darkTheme.darkThemeHoverTextColor || '#ffffff'};
-            }
-        }
-
-    `
-
-    const style = document.createElement('style')
-    style.innerHTML = additionalStyle
-
-    document.getElementsByTagName('head')[0].appendChild(style)
-
-    const selectBox = $('.number-input-dropdown'),
-        downArrow = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
-
-    let searchBox = $('.number-input-search-field');
-    let inputBox = $('.number-input-field');
-    let selectedOption = $('.number-input-icon-wrapper');
-
-
-    let options = null;
-
-    const flagIcon = document.createElement('span')
-    flagIcon.setAttribute('class', 'iconify')
-    flagIcon.setAttribute('data-icon', 'flag:gb-4x3')
-    $('.number-input-icon-wrapper').prepend(flagIcon)
-
-
-    $.each(countries, function (index, country) {
-        const option = `<li class="option"><div><span class="iconify" data-icon="flag:${country.code.toLowerCase()}-4x3"></span><span class="country-name">${country.name}</span></div><span class='country-code'>+${country.phone}</span></li>`;
-        selectBox.find('ol').append(option);
-        options = $('.option');
-
-    });
-
-    inputBox.val(parseInt('+' + countries[0].phone + " "))
-
-    function selectOption() {
-        const icon = $(this).find('.iconify').clone(),
-            phoneCode = $(this).find('.country-code').clone().text();
-
-        selectedOption.html('').append(icon, downArrow);
-        inputBox.val(parseInt(phoneCode + ' ')).focus();
-        selectBox.hide();
-        searchBox.val('');
-        selectBox.find('.hide').removeClass('hide');
-    }
-
-    function searchCountry() {
-        const searchQuery = searchBox.val().toLowerCase();
-
-        options.each(function () {
-            const isMatched = $(this).find('.country-name').text().toLowerCase().includes(searchQuery);
-            $(this).toggleClass('hide', !isMatched);
-        });
-    }
-
-    selectedOption.on('click', function (e) {
-
-        inputBox = $(this).siblings().eq(0)
-        selectedOption = $(this)
-        searchBox = $(this).siblings().eq(1).find('.number-input-search-field')
-
-        $('.number-input-dropdown').not($(this).siblings().eq(1)).hide();
-
-        $(this).siblings().eq(1).toggle()
-
-    });
-
-    $(document).on("click", function (e) {
-
-        if (!(e.target.getAttribute('class') === searchBox.attr('class'))) {
-
-            if ($(e.target).closest(selectedOption).length === 0) {
-                selectBox.hide()
-                selectBox.attr('input-number-dropdown', 'hide')
-            }
-        }
-
-    });
-
-    options.on('click', selectOption);
-    searchBox.on('input', searchCountry);
-
-})
+//
+// $(document).ready(function () {
+//
+//     const wrapperDiv = $('[data-form-field-pro="number-input-with-country-code"]')
+//
+//     const lightTheme = {
+//         lightThemeHoverTextColor: wrapperDiv.attr('data-light-theme-number-input-text-color'),
+//         lightThemeHoverBackgroundColor: wrapperDiv.attr('data-light-theme-number-input-background-color')
+//     }
+//
+//     const darkTheme = {
+//         darkThemeHoverTextColor: wrapperDiv.attr('data-dark-theme-number-input-text-color'),
+//         darkThemeHoverBackgroundColor: wrapperDiv.attr('data-dark-theme-number-input-background-color')
+//     }
+//
+//
+//     const script = document.createElement('script');
+//     script.src = 'https://code.iconify.design/3/3.1.0/iconify.min.js';
+//
+//     document.head.appendChild(script);
+//
+//
+//     const additionalStyle = `
+//
+//
+// .number-input-dropdown ol::-webkit-scrollbar {
+//     width: 0.6rem;
+// }
+//
+// .number-input-dropdown ol::-webkit-scrollbar-thumb {
+//     width: 0.4rem;
+//     height: 3rem;
+//     background-color: #ccc;
+//     border-radius: .4rem;
+// }
+//
+// .number-input-dropdown ol li {
+//     padding: 8px;
+//     display: flex;
+//     font-size: 14px;
+//     justify-content: space-between;
+//     cursor: pointer;
+// }
+//
+// .number-input-dropdown ol li.hide {
+//     display: none;
+// }
+//
+// .number-input-dropdown ol li:not(:last-child) {
+//     border-bottom: .1rem solid #eee;
+// }
+//
+// .number-input-dropdown ol li:hover {
+//     background-color:${lightTheme.lightThemeHoverBackgroundColor || '#000000'};
+//     color:${lightTheme.lightThemeHoverTextColor || '#ffffff'};
+// }
+//
+// .number-input-dropdown ol li .country-name {
+//     margin-left: .4rem;
+// }
+//
+//   @media (prefers-color-scheme: dark){
+//           .number-input-dropdown ol li:hover {
+//                 background-color: ${darkTheme.darkThemeHoverBackgroundColor || '#000000'};
+//                 color: ${darkTheme.darkThemeHoverTextColor || '#ffffff'};
+//             }
+//         }
+//
+//     `
+//
+//     const style = document.createElement('style')
+//     style.innerHTML = additionalStyle
+//
+//     document.getElementsByTagName('head')[0].appendChild(style)
+//
+//     const selectBox = $('.number-input-dropdown'),
+//         downArrow = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
+//
+//     let searchBox = $('.number-input-search-field');
+//     let inputBox = $('.number-input-field');
+//     let selectedOption = $('.number-input-icon-wrapper');
+//
+//
+//     let options = null;
+//
+//     const flagIcon = document.createElement('span')
+//     flagIcon.setAttribute('class', 'iconify')
+//     flagIcon.setAttribute('data-icon', 'flag:gb-4x3')
+//     $('.number-input-icon-wrapper').prepend(flagIcon)
+//
+//
+//     $.each(countries, function (index, country) {
+//         const option = `<li class="option"><div><span class="iconify" data-icon="flag:${country.code.toLowerCase()}-4x3"></span><span class="country-name">${country.name}</span></div><span class='country-code'>+${country.phone}</span></li>`;
+//         selectBox.find('ol').append(option);
+//         options = $('.option');
+//
+//     });
+//
+//     inputBox.val(parseInt('+' + countries[0].phone + " "))
+//
+//     function selectOption() {
+//         const icon = $(this).find('.iconify').clone(),
+//             phoneCode = $(this).find('.country-code').clone().text();
+//
+//         selectedOption.html('').append(icon, downArrow);
+//         inputBox.val(parseInt(phoneCode + ' ')).focus();
+//         selectBox.hide();
+//         searchBox.val('');
+//         selectBox.find('.hide').removeClass('hide');
+//     }
+//
+//     function searchCountry() {
+//         const searchQuery = searchBox.val().toLowerCase();
+//
+//         options.each(function () {
+//             const isMatched = $(this).find('.country-name').text().toLowerCase().includes(searchQuery);
+//             $(this).toggleClass('hide', !isMatched);
+//         });
+//     }
+//
+//     selectedOption.on('click', function (e) {
+//
+//         inputBox = $(this).siblings().eq(0)
+//         selectedOption = $(this)
+//         searchBox = $(this).siblings().eq(1).find('.number-input-search-field')
+//
+//         $('.number-input-dropdown').not($(this).siblings().eq(1)).hide();
+//
+//         $(this).siblings().eq(1).toggle()
+//
+//     });
+//
+//     $(document).on("click", function (e) {
+//
+//         if (!(e.target.getAttribute('class') === searchBox.attr('class'))) {
+//
+//             if ($(e.target).closest(selectedOption).length === 0) {
+//                 selectBox.hide()
+//                 selectBox.attr('input-number-dropdown', 'hide')
+//             }
+//         }
+//
+//     });
+//
+//     options.on('click', selectOption);
+//     searchBox.on('input', searchCountry);
+//
+// })
 
 // new phone number input test
 $(document).ready(async function () {
@@ -447,7 +447,6 @@ $(document).ready(async function () {
     const input = document.querySelector("#phone");
 
     let iti = window.intlTelInput(input, {
-        preferredCountries: ['no', 'se'],
         countrySearch: true,
         utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js',
     });
