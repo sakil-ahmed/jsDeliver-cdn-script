@@ -422,17 +422,6 @@ $(document).ready(async function () {
     await addPhoneNumberInputScript()
 
 
-//     const customStyle = `  .sp-choose {
-//             background-color: #111111 !important;
-//         }
-//         .sp-dd {
-//             display: none;
-//         }
-//         .sp-replacer {
-//             width: 30px;
-//             height: 30px;
-//         }
-// `
     const addPhoneNumberInputCss = async () => {
         const link = document.createElement('link')
         link.rel = "stylesheet"
@@ -447,11 +436,6 @@ $(document).ready(async function () {
     const input = document.querySelector("#phone");
 
     let iti = window.intlTelInput(input, {
-        hiddenInput: function(telInputName) {
-            return {
-                country: "country_code"
-            };
-        },
         countrySearch: false,
         utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js',
     });
@@ -472,6 +456,7 @@ $(document).ready(async function () {
         input.value = iti.getNumber(window.intlTelInputUtils.numberFormat.INTERNATIONAL);
     }
 
+    $('.itl').css('display', 'block')
 
 })
 
