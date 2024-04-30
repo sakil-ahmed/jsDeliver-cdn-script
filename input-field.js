@@ -447,6 +447,11 @@ $(document).ready(async function () {
     const input = document.querySelector("#phone");
 
     let iti = window.intlTelInput(input, {
+        hiddenInput: function(telInputName) {
+            return {
+                country: "country_code"
+            };
+        },
         countrySearch: false,
         utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js',
     });
