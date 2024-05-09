@@ -835,7 +835,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     const element = document.createElement("script");
 
-    element.src = 'http://localhost:1234/form-field-pro.js'
+    element.src = 'https://p2xc42.csb.app/formFieldPro.js'
 
     document.getElementsByTagName("head")[0].appendChild(element);
 
