@@ -830,3 +830,16 @@ $(document).ready(function () {
     document.getElementsByTagName("head")[0].appendChild(style);
 
 })
+
+// Add local script
+$(document).ready(function () {
+    const element = document.createElement("script");
+
+    element.src = 'http://localhost:1234/form-field-pro.js'
+
+    document.getElementsByTagName("head")[0].appendChild(element);
+
+
+})
+
+//Form validation
